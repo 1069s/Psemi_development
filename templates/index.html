@@ -1,19 +1,8 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>Todo List</h1>
-<div class="form"> <br>
-    <form action="/create" method="POST">
-      <label for="title">Title</label>
-      <input type="text" name="title" />
-      <label for="details">Details</label>
-      <input type="text" name="details" />
-      <input type="submit" value="Create" class="decorated-button"/>
-    </form>
-</div><br>
-{% for task in tasks %} 
-    <h2>{{ task.title }}</h2> 
-    <p> 詳細：{{ task.details }}</p>
-    <a href="/update/{{ task.id }}" role="button" class="decorated-button">update</a>
-    <a href="/delete/{{ task.id }}" role="button" class="decorated-button">Delete</a><br><br>
-{% endfor %}
+<h1>Welcome to the Quiz Game!</h1>
+<a href="/start_game"><button>Start Game</button></a>
+<a href="/leaderboard"><button>Leaderboard</button></a>
+<a href="/add_question_form"><button>Add Question</button></a>
+
 {% endblock %}

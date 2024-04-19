@@ -1,51 +1,85 @@
-from flask import Flask,render_template,request,redirect
+from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
+import random
 
 app = Flask(__name__)
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///todo.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///quiz_game.db"
+app.config["SECRET_KEY"] = "secret_key"
 db = SQLAlchemy(app)
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    details = db.Column(db.String(100))
 
-@app.route("/create", methods=["POST"])
-def create():
-        title = request.form.get("title")
-        details = request.form.get("details")
-        new_task = Todo(title=title, details=details)
-        db.session.add(new_task)
-        db.session.commit()
-        return redirect("/")
+class Player(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    score = db.Column(db.Integer, default=0)
+
+class Question(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, nullable=False)
+    choices = db.Column(db.Text, nullable=False)
+    difficulty = db.Column(db.String(50), nullable=False)
+    correct_choice = db.Column(db.Integer, nullable=False)
 
 @app.route("/")
 def index():
-    tasks = Todo.query.all()
-    return render_template("index.html", tasks=tasks)
+    return render_template("index.html")
 
-@app.route('/delete/<int:id>')
-def delete(id):
-    delete_task = Todo.query.get(id)
-    db.session.delete(delete_task)
-    db.session.commit()
-    return redirect('/')
+@app.route("/leaderboard")
+def leaderboard():
+    players = Player.query.order_by(Player.score.desc()).all()
+    return render_template("leaderboard.html", players=players)
 
-@app.route("/update/<int:id>", methods=["GET","POST"])
-def update(id):
-    update_task = Todo.query.get(id)
-    if request.method == 'GET':
-         #tasks = Todo.query.all()
-         return render_template('update.html',update_task=update_task)
-    update_task.title = request.form.get("title")
-    update_task.details = request.form.get("details")
+@app.route("/start_game", methods=["GET", "POST"])
+def start_game():
+    if request.method == "POST":
+        name = request.form.get("name")
+        existing_player = Player.query.filter_by(name=name).first()
+        if existing_player:
+            return "Player already exists. Please choose another name."
+        else:
+            session["player_name"] = name
+            return redirect("/select_difficulty")
+    return render_template("start_game.html")
+
+@app.route("/add_question_form")
+def add_question_form():
+    return render_template("add_question_form.html")
+
+@app.route("/add_question", methods=["POST"])
+def add_question():
+    text = request.form.get("text")
+    choices = [request.form.get(f"choice{i}") for i in range(1, 3)]
+    difficulty = request.form.get("difficulty")
+    correct_choice = int(request.form.get("correct_choice"))
+
+    new_question = Question(text=text, choices=",".join(choices), difficulty=difficulty, correct_choice=correct_choice)
+    db.session.add(new_question)
     db.session.commit()
-    return redirect("/")
-     
+
+    return "Question added successfully!"
+
+# @app.route("/select_difficulty")
+# def select_difficulty():
+#     return render_template("select_difficulty.html")
+
+# @app.route("/select_difficulty_decision", methods=["GET", "POST"])
+# def select_difficulty_decision():
+#     if request.method == "POST":
+#         session["difficulty"] = request.form.get("difficulty")
+#         return redirect("/play_game")
+#     return render_template("select_difficulty.html")
+
+# @app.route("/play_game", methods=["GET", "POST"])
+# def play_game():
+#     difficulty = session.get("difficulty")
+#     question = Question.query.filter_by(difficulty=difficulty).order_by(func.random()).first()
+#     if request.method == "POST":
+#         selected_choice = int(request.form.get("choice"))
+#         if selected_choice == question.correct_choice:
+#             player = Player.query.filter_by(name=session["player_name"]).first()
+#             player.score += 10
+#             db.session.commit()
+#         return redirect("/play_game")
+#     return render_template("play_game.html", question=question)
+
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
-
-
-
