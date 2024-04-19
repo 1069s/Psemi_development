@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Add New Question</h1>
+<form action="/add_question" method="POST">
+    <label for="difficulty">Difficulty:</label><br>
+    <select name="difficulty" id="difficulty" required>
+        <option value="Easy">Easy</option>
+        <option value="Normal">Normal</option>
+        <option value="Hard">Hard</option>
+    </select><br>
+
+    <label for="text">Question Text:</label><br>
+    <textarea name="text" id="text" required></textarea><br>
+    
+    <label for="choice1">Choice 1:</label><br>
+    <input type="text" name="choice1" id="choice1" required><br>
+    
+    <label for="choice2">Choice 2:</label><br>
+    <input type="text" name="choice2" id="choice2" required><br>
+    
+    <label for="choice3">Choice 3:</label><br>
+    <input type="text" name="choice3" id="choice3" required><br>
+
+    <label for="choice4">Choice 4:</label><br>
+    <input type="text" name="choice4" id="choice4" required><br>
+    
+    <label for="correct_choice">Correct Choice (index):</label><br>
+    <select name="correct_choice" id="correct_choice" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select><br>
+
+    <input type="submit" value="Add Question">
+</form>
+<a href="/">Back to Home</a>
+{% endblock %}
