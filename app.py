@@ -47,7 +47,7 @@ def add_question_form():
 @app.route("/add_question", methods=["POST"])
 def add_question():
     text = request.form.get("text")
-    choices = [request.form.get(f"choice{i}") for i in range(1, 3)]
+    choices = [request.form.get(f"choice{i}") for i in range(1, 5)]
     difficulty = request.form.get("difficulty")
     correct_choice = int(request.form.get("correct_choice"))
 
@@ -55,7 +55,38 @@ def add_question():
     db.session.add(new_question)
     db.session.commit()
 
-    return "Question added successfully!"
+    return render_template("add_question_success.html")
+
+@app.route("/questions")
+def list_questions():
+    questions = Question.query.all() 
+    return render_template("question_list.html", questions=questions)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+ delete_task = Question.query.get(id)
+ db.session.delete(delete_task)
+ db.session.commit()
+ return redirect('/')
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+ update_task = Question.query.get(id)
+ if request.method == 'GET':
+  return render_template('question_update.html',question=update_task)
+ if request.method == "POST":
+        text = request.form.get("text")
+        choices = [request.form.get(f"choice{i}") for i in range(1, 5)]
+        difficulty = request.form.get("difficulty")
+        correct_choice = int(request.form.get("correct_choice"))
+
+        update_task.text = text
+        update_task.choices = ",".join(choices)
+        update_task.difficulty = difficulty
+        update_task.correct_choice = correct_choice
+
+        db.session.commit()
+        return redirect("/questions")
 
 # @app.route("/select_difficulty")
 # def select_difficulty():
