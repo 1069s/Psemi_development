@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Update Question</h1>
+<form action="/update/{{ question.id }}" method="POST">
+    <label for="difficulty">Difficulty:</label><br>
+    <select name="difficulty" id="difficulty" required>
+        <option value="Easy" {% if question.difficulty == "Easy" %} selected {% endif %}>Easy</option>
+        <option value="Normal" {% if question.difficulty == "Normal" %} selected {% endif %}>Normal</option>
+        <option value="Hard" {% if question.difficulty == "Hard" %} selected {% endif %}>Hard</option>
+    </select><br>
+
+    <label for="text">Question Text:</label><br>
+    <textarea name="text" id="text" required>{{ question.text }}</textarea><br>
+    
+    {% for i in range(1, 5) %}
+    {% if i <= question.choices.split(',')|length %}
+        {% set choice = question.choices.split(',')[i-1] %}
+    {% else %}
+        {% set choice = '' %}
+    {% endif %}
+    <label for="choice{{ i }}">Choice {{ i }}:</label><br>
+    <input type="text" name="choice{{ i }}" id="choice{{ i }}" value="{{ choice }}" required><br>
+    {% endfor %}
+
+    
+    <label for="correct_choice">Correct Choice:</label><br>
+    <select name="correct_choice" id="correct_choice" required>
+        {% for choice_index in range(1, 5) %}
+            <option value="{{ choice_index }}" {% if question.correct_choice == choice_index %} selected {% endif %}>{{ choice_index }}</option>
+        {% endfor %}
+    </select><br>
+
+    <input type="submit" value="Update Question">
+</form>
+<a href="/">Back to Home</a>
+{% endblock %}
