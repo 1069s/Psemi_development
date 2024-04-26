@@ -1,8 +1,26 @@
 {% extends 'base.html' %}
+
 {% block body %}
-<h1>Welcome to the Quiz Game!</h1>
-<a href="/start_game"><button>Start Game</button></a>
-<a href="/leaderboard"><button>Leaderboard</button></a>
-<a href="/add_question_form"><button>Add Question</button></a>
+<!--タイトル
+<nav class="navbar" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand pl-3" href="/" style="font-size: 2rem">Welcome to the Quiz Game!</a>
+    </div>
+</nav><br>
+-->
+
+<div id="particles-js"></div>
+<div id="wrapper">
+    <p><img src="../static/image/なんかロゴ.jpg" class="rounded mx-auto d-block" alt="なんかロゴ" width="400" height="400">
+    </p>
+
+    <!--ボタン配置-->
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a class="btn btn-primary btn-lg" href="/start_game" role="button">Start Game</a><br>
+        <a class="btn btn-success btn-sm" href="/leaderboard" role="button">Update</a><br>
+        <a class="btn btn-danger btn-sm" href="/add_question_form" role="button">Delete</a><br>
+    </div>
+    <!--/wrapper-->
+</div>
 
 {% endblock %}
