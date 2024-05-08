@@ -56,6 +56,12 @@
 
 <div class="container">
     <h1>ログイン</h1>
+    <form action="/start_game" method="POST">
+        <input type="submit" value="ログイン">
+    </form>
+</div>
+<div class="container">
+    <h1>管理者ログイン</h1>
     <form action="/login" method="POST">
         <label for="admin_id">管理者ID</label>
         <input type="text" id="admin_id" name="admin_id" required>
