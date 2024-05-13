@@ -1,24 +1,20 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<!--タイトル
-<nav class="navbar" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-        <a class="navbar-brand pl-3" href="/" style="font-size: 2rem">Welcome to the Quiz Game!</a>
-    </div>
-</nav><br>
--->
+
 <div id="particles-js"></div>
 
 <div id="wrapper">
-    
+
     <!--ボタン配置-->
-    <div class="d-grid gap-2 col-6 mx-auto">
-        <img src="../static/image/key_logo.png" class="rounded mx-auto d-block" width="300" height="250"><br>
-        <div class="p-3 mb-2 bg-dark text-white">Quize</div>
-        <a class="btn btn-primary btn-lg" href="/start_game" role="button">Start Game</a><br>
-        <a class="btn btn-success btn-sm" href="/leaderboard" role="button">Update</a><br>
-        <a class="btn btn-danger btn-sm" href="/add_question_form" role="button">Delete</a><br>
+    <div class="container-sm bg-light" style="width: 800px;">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <img src="../static/image/key_logo.png" class="rounded mx-auto d-block" width="300" height="250">
+            <img src="../static/image/文字ロゴ.png"><br>
+            <a class="float3_blue" href="/start_game" role="button">Start Game</a><br>
+            <a class="float3_green" href="/leaderboard" role="button">Leaderboard</a><br>
+            <a class="float3_red" href="/add_question_form" role="button">Add Question</a><br>
+        </div>
     </div>
     <!--/wrapper-->
 </div>

@@ -1,0 +1,58 @@
+/*== 上に移動し影がついて浮き上がる */
+
+/*ボタンの形状*/
+.float3_red{
+	position: relative;
+	overflow: hidden;
+    text-decoration: none;
+	display:inline-block;
+	background: #ef0b0b;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 25px;
+    outline: none;
+    /*アニメーションの設定*/
+    transition: all .3s;
+}
+
+.float3_blue{
+	position: relative;
+	overflow: hidden;
+    text-decoration: none;
+	display:inline-block;
+	background: #260bef;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 25px;
+    outline: none;
+    /*アニメーションの設定*/
+    transition: all .3s;
+}
+
+.float3_green{
+	position: relative;
+	overflow: hidden;
+    text-decoration: none;
+	display:inline-block;
+	background: #2d8d04;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 25px;
+    outline: none;
+    /*アニメーションの設定*/
+    transition: all .3s;
+}
+
+/*hoverをしたらボックスに影がつき、上に上がる*/
+.float3_red:hover {
+	top:-3px;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+.float3_blue:hover {
+	top:-3px;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+.float3_green:hover {
+	top:-3px;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
