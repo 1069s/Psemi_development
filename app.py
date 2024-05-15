@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 import random
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///quiz_game.db"
 app.config["SECRET_KEY"] = "secret_key"
+bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
 class Player(db.Model):
@@ -35,7 +37,7 @@ def manager():
 def login_user():
     return render_template("user/index.html")
 
-ADMIN_PASSWORD = "adminpass"
+"""ADMIN_PASSWORD = "adminpass"
 
 @app.route("/login_manager", methods=["POST"])
 def login_manager():
@@ -47,6 +49,21 @@ def login_manager():
     else:
         # 管理者パスワードが間違っている場合はログインページに戻り、エラーメッセージを表示
         error_message = "管理者パスワードが間違っています。"
+        return render_template("login.html", error_message=error_message)*/ """
+
+# ハッシュ化されたパスワードの保存
+hashed_admin_password = "$2b$12$tmeV1huwVTxLH6.KPO7VVu8oXguCW/Uz.K1qFj7YQAhJU.oFzcndi"
+
+@app.route("/login_manager", methods=["POST"])
+def login_manager():
+    admin_password = request.form.get("admin_password")
+
+    if bcrypt.check_password_hash(hashed_admin_password, admin_password):
+        # 管理者パスワードが正しい場合は管理者ページにリダイレクト
+        return render_template("manager/index.html")
+    else:
+        # 管理者パスワードが間違っている場合はログインページに戻り、エラーメッセージを表示
+        error_message = "管理者パスワードが間違ってまいす。"
         return render_template("login.html", error_message=error_message)
 
 
