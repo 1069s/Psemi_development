@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Play Game</h1>
+
+<form action="/play_game" method="post">
+    <h2>問題:{{ question.text }}</h2>
+    <input type="submit" value="1" name="1">{{ choices[0] }}<br>
+    <input type="submit" value="2" name="2">{{ choices[1] }}<br>
+    <input type="submit" value="3" name="3">{{ choices[2] }}<br>
+    <input type="submit" value="4" name="4">{{ choices[3] }}<br>
+</form>
+
+{% endblock %}

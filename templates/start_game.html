@@ -5,13 +5,13 @@
 <h1>Start Game</h1>
 問題の説明，使いかたの説明<br><br>
 
+{% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+{% endif %}
 <form action="/start_game" method="post">
     <label for="name">Enter your name:</label><br>
     <input type="text" id="name" name="name" required><br>
-    <h3>Select Level</h3>
-    <a href="/easy_game"><button>easy</button></a>
-    <a href="/normal_game"><button>normal</button></a>
-    <a href="/hard_game"><button>Hard</button></a>
+
 </form>
 
 
