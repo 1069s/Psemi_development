@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!--メニューバー-->
+<nav>
+    <ul>
+        <li><a href="#">TOP</a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#">最新情報</a></li>
+        <li><a href="#">ブログ</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+    </ul>
+</nav>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h1>順位表</h1> 
+<table>
+    <thead>
+        <tr>
+            <th>順位</th>
+            <th>名前</th>
+            <th>得点</th>
+            <th>アップデート</th>
+            <th>削除</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rank, player in ranked_players %}
+        <tr>
+            <td>{{ rank }}位</td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.score }}</td>
+            <td><a href="/update_player/{{ player.id }}" role="button">Update</a> </td>
+            <td><a href="/delete_player/{{ player.id }}" role="button">Delete</a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/manager">Back to Home</a>
+
+{% endblock %}
