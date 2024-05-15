@@ -1,38 +1,92 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>Add New Question</h1>
-<form action="/add_question" method="POST">
-    <label for="difficulty">Difficulty:</label><br>
-    <select name="difficulty" id="difficulty" required>
-        <option value="Easy">Easy</option>
-        <option value="Normal">Normal</option>
-        <option value="Hard">Hard</option>
-    </select><br>
 
-    <label for="text">Question Text:</label><br>
-    <textarea name="text" id="text" required></textarea><br>
-    
-    <label for="choice1">Choice 1:</label><br>
-    <input type="text" name="choice1" id="choice1" required><br>
-    
-    <label for="choice2">Choice 2:</label><br>
-    <input type="text" name="choice2" id="choice2" required><br>
-    
-    <label for="choice3">Choice 3:</label><br>
-    <input type="text" name="choice3" id="choice3" required><br>
+<link rel="stylesheet" href="../static/css/background_simple.css">
 
-    <label for="choice4">Choice 4:</label><br>
-    <input type="text" name="choice4" id="choice4" required><br>
-    
-    <label for="correct_choice">Correct Choice (index):</label><br>
-    <select name="correct_choice" id="correct_choice" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select><br>
+<!--メニューバー-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">
+            <img src="../static/image/secquiz_logo.png" alt="Logo" width="100" height="30"
+                class="d-inline-block align-text-top">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="http://127.0.0.1:5000/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/start_game">StartGame</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/leaderboard">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add_question_form">Add Question</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav><br>
 
-    <input type="submit" value="Add Question">
-</form>
-<a href="/">Back to Home</a>
+<!--上部分-->
+<div class="container-sm bg-light" style="width: 800px;"><br>
+    <p class="fs-1 fw-bold text-center">Add New Question</p><br>
+    <p class="fs-6 border-bottom">説明の欄</p><br>
+
+    <!--ボタン色々-->
+    <form action="/add_question" method="POST">
+
+        <p class="fs-6">難易度を選んでください</p>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="difficulty"
+            id="difficulty" required>
+            <option selected>Select difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Normal">Normal</option>
+            <option value="Hard">Hard</option>
+        </select><br>
+
+        <div class="border-top border-bottom"><br>
+
+            <p class="fs-6">選択肢を作成してください</p><br>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" name="choice1" id="choice1" required>
+                <label for="choice1">Choice1</label>
+            </div><br>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" name="choice2" id="choice2" required>
+                <label for="choice1">Choice2</label>
+            </div><br>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" name="choice3" id="choice3" required>
+                <label for="choice1">Choice3</label>
+            </div><br>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" name="choice4" id="choic4" required>
+                <label for="choice1">Choice4</label>
+            </div><br>
+        </div><br>
+
+        <p class="fs-6">正解の選択肢を選んでください</p>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="correct_choice"
+            id="correct_choice" required>
+            <option selected>Select correct choice</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br>
+
+        <div class="form-group row justify-content-center">
+            <input type="submit" class="float3_red" name="submit" value="Add Question">
+        </div>
+    </form>
+
+    <a href="/">Back to Home</a>
+</div>
+
 {% endblock %}

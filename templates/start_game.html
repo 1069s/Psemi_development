@@ -2,18 +2,61 @@
 
 {% block body %}
 
-<h1>Start Game</h1>
-問題の説明，使いかたの説明<br><br>
+<link rel="stylesheet" href="../static/css/difficulty_radio.css">
+<div id="particles-js"></div>
 
-<form action="/start_game" method="post">
-    <label for="name">Enter your name:</label><br>
-    <input type="text" id="name" name="name" required><br>
-    <h3>Select Level</h3>
-    <a href="/easy_game"><button>easy</button></a>
-    <a href="/normal_game"><button>normal</button></a>
-    <a href="/hard_game"><button>Hard</button></a>
-</form>
+<!--メニューバー-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">
+            <img src="../static/image/secquiz_logo.png" alt="Logo" width="100" height="30"
+                class="d-inline-block align-text-top">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="http://127.0.0.1:5000/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/start_game">StartGame</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/leaderboard">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add_question_form">Add Question</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav><br>
 
+<!--上部分-->
+<div class="container-sm bg-light" style="width: 800px;"><br>
+    <p class="fs-1 fw-bold text-center">Start Game</p><br>
+    <p class="fs-6">問題の説明，使いかたの説明</p><br>
+</div><br>
 
+<!--ボタン色々-->
+<div class="container-sm bg-light" style="width: 800px;"><br>
+    <form action="/start_game" method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="difiiculty_radio">
+            <input type="radio" name="difiiculty" id="select_easy" value="easy" checked="">
+            <label for="select_easy">easy</label>
+            <input type="radio" name="difiiculty" id="select_normal" value="normal">
+            <label for="select_normal">normal</label>
+            <input type="radio" name="difiiculty" id="select_hard" value="hard">
+            <label for="select_hard">hard</label>
+        </div><br>
+
+        <div class="form-group row justify-content-center">
+            <input type="submit" class="float3_blue" name="submit" value="Start">
+        </div>
+    </form>
+</div>
 
 {% endblock %}
