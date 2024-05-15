@@ -39,12 +39,15 @@
 
 <!--ボタン色々-->
 <div class="container-sm bg-light" style="width: 800px;"><br>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
     <form action="/start_game" method="post">
         <div class="mb-3">
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
         </div>
 
-        <div class="difiiculty_radio">
+        <!-- <div class="difiiculty_radio">
             <input type="radio" name="difiiculty" id="select_easy" value="easy" checked="">
             <label for="select_easy">easy</label>
             <input type="radio" name="difiiculty" id="select_normal" value="normal">
@@ -55,7 +58,7 @@
 
         <div class="form-group row justify-content-center">
             <input type="submit" class="float3_blue" name="submit" value="Start">
-        </div>
+        </div> -->
     </form>
 </div>
 

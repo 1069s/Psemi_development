@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Select Level</h1>
+
+<form action="/select_difficulty" method="post">
+    <input type="submit" value="Easy" name="Easy">
+    <input type="submit" value="Normal" name="Normal">
+    <input type="submit" value="Hard" name="Hard">
+</form>
+
+
+
+{% endblock %}
