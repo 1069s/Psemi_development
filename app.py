@@ -26,20 +26,19 @@ error_message=""
 def index():
     global error_message
     error_message=""
-    # return render_template("index.html")
-    return render_template("login.html")
+    return render_template("index.html")
 
 @app.route("/user")
 def user():
-    return render_template("user/index.html")
+    return render_template("user/top.html")
 
 @app.route("/manager")
 def manager():
-    return render_template("manager/index.html")
+    return render_template("manager/top.html")
 
 @app.route("/login_user")
 def login_user():
-    return render_template("user/index.html")
+    return render_template("user/top.html")
 
 """ADMIN_PASSWORD = "adminpass"
 
@@ -64,11 +63,11 @@ def login_manager():
 
     if bcrypt.check_password_hash(hashed_admin_password, admin_password):
         # 管理者パスワードが正しい場合は管理者ページにリダイレクト
-        return render_template("manager/index.html")
+        return render_template("manager/top.html")
     else:
         # 管理者パスワードが間違っている場合はログインページに戻り、エラーメッセージを表示
         error_message = "管理者パスワードが間違ってまいす。"
-        return render_template("login.html", error_message=error_message)
+        return render_template("index.html", error_message=error_message)
 
 
 @app.route("/leaderboard_user")
