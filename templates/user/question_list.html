@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h1>問題リスト</h1> 
+<table>
+    <thead>
+        <tr>
+            <th>問題番号</th>
+            <th>問題文</th>
+            <th>選択肢</th>
+            <th>難易度</th>
+            <th>正解番号</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.text }}</td>
+            <td>{{ question.choices }}</td>
+            <td>{{ question.difficulty }}</td>
+            <td>{{ question.correct_choice }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/user">Back to Home</a>
+{% endblock %}

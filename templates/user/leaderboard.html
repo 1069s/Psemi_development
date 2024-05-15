@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!--メニューバー-->
+<nav>
+    <ul>
+        <li><a href="#">TOP</a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#">最新情報</a></li>
+        <li><a href="#">ブログ</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+    </ul>
+</nav>
+
+<h1>Leaderboard</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Score</th>
+    </tr>
+    {% for player in players %}
+    <tr>
+        <td>{{ player.name }}</td>
+        <td>{{ player.score }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="/user"><button>Back</button></a>
+
+{% endblock %}
