@@ -9,7 +9,7 @@ app.config["SECRET_KEY"] = "secret_key"
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
-class Player(db.Model):
+class Player(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     score = db.Column(db.Integer, default=0)
@@ -30,6 +30,8 @@ def index():
 
 @app.route("/user")
 def user():
+    global error_message
+    error_message=""
     return render_template("user/top.html")
 
 @app.route("/manager")
@@ -216,24 +218,34 @@ def select_difficulty_decision():
     return render_template("user/select_difficulty.html")
 
 
+each_level_questions = []
+choices_list = []
 @app.route("/play_game", methods=["GET", "POST"])
 def play_game():
-    each_level_questions = []
+    global num
+    global each_level_questions
+    global choices_list
     difficulty = list(session.get("difficulty").values())
-    questions = Question.query.all()
-    for question in questions:
-        if question.difficulty == difficulty[0]:
-            each_level_questions.append(question)
-    choices_list = []
-    for question in each_level_questions:
-        choices_list.append(question.choices.split(","))
+    print(num)
+    if num == 0 and request.method == "GET":
+        each_level_questions = []
+        choices_list = []
+        questions = Question.query.all()
+        for question in questions:
+            if question.difficulty == difficulty[0]:
+                each_level_questions.append(question)
+        print(each_level_questions)
+        random.shuffle(each_level_questions)
+        print(each_level_questions)
+        for question in each_level_questions:
+            choices_list.append(question.choices.split(","))
     print(each_level_questions)
     print(choices_list)
     #question = Question.query.filter_by(Question.query.difficulty==difficulty[0])
 
-    if request.method == "POST":
-        global num
-        num += 1
+    if num >= len(each_level_questions):
+        return redirect("/result")
+    if request.method == "POST": 
         selected_choice = []
         tf="False"
         #selected_choice = int(request.form.values()[0])
@@ -242,10 +254,10 @@ def play_game():
         selected_choice.append(request.form.get("3"))
         selected_choice.append(request.form.get("4"))
         print(selected_choice)
-        print(question.correct_choice)
-        print(selected_choice[question.correct_choice-1])
-        print(selected_choice[question.correct_choice-1] == str(question.correct_choice))
-        if selected_choice[question.correct_choice-1] == str(question.correct_choice):
+        print(each_level_questions[num].correct_choice)
+        print(selected_choice[each_level_questions[num].correct_choice-1])
+        print(selected_choice[each_level_questions[num].correct_choice-1] == str(each_level_questions[num].correct_choice))
+        if selected_choice[each_level_questions[num].correct_choice-1] == str(each_level_questions[num].correct_choice):
             #player = Player.query.filter_by(name=session["player_name"]).first()
             players = Player.query.all()
             for each_player in players:
@@ -261,14 +273,16 @@ def play_game():
             db.session.commit()
             tf="True" #
             print("correct!")
+            print(num)
+            num += 1
             return redirect(url_for('trueFalse', tf=tf)) #
         else:
             tf="False" #
+            print(num)
             print("oops!")
+            num += 1
             return redirect(url_for('trueFalse', tf=tf)) #
-        return redirect("/play_game")
-    if num >= len(each_level_questions):
-        return redirect("/result") 
+        #return redirect("/play_game")
     return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num])
 
 @app.route("/result", methods=["GET", "POST"])
