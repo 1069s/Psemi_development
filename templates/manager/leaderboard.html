@@ -3,15 +3,6 @@
 {% block body %}
 
 <!--メニューバー-->
-<nav>
-    <ul>
-        <li><a href="#">TOP</a></li>
-        <li><a href="#"></a></li>
-        <li><a href="#">最新情報</a></li>
-        <li><a href="#">ブログ</a></li>
-        <li><a href="#">お問い合わせ</a></li>
-    </ul>
-</nav>
 
 <style>
     table {
@@ -41,7 +32,6 @@
             <th>順位</th>
             <th>名前</th>
             <th>得点</th>
-            <th>アップデート</th>
             <th>削除</th>
         </tr>
     </thead>
@@ -51,7 +41,6 @@
             <td>{{ rank }}位</td>
             <td>{{ player.name }}</td>
             <td>{{ player.score }}</td>
-            <td><a href="/update_player/{{ player.id }}" role="button">Update</a> </td>
             <td><a href="/delete_player/{{ player.id }}" role="button">Delete</a> </td>
         </tr>
         {% endfor %}

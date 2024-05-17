@@ -30,6 +30,7 @@
             <th>選択肢</th>
             <th>難易度</th>
             <th>正解番号</th>
+            <th>解説</th>
         </tr>
     </thead>
     <tbody>
@@ -40,6 +41,7 @@
             <td>{{ question.choices }}</td>
             <td>{{ question.difficulty }}</td>
             <td>{{ question.correct_choice }}</td>
+            <td>{{ question.explain }}</td>
         </tr>
         {% endfor %}
     </tbody>
