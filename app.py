@@ -20,6 +20,7 @@ class Question(db.Model):
     choices = db.Column(db.Text, nullable=False)
     difficulty = db.Column(db.String(50), nullable=False)
     correct_choice = db.Column(db.Integer, nullable=False)
+    explain = db.Column(db.Text, nullable=True)
 
 error_message=""
 @app.route("/")
@@ -151,8 +152,9 @@ def add_question_user():
     choices = [request.form.get(f"choice{i}") for i in range(1, 5)]
     difficulty = request.form.get("difficulty")
     correct_choice = int(request.form.get("correct_choice"))
+    explain = request.form.get("explain")
 
-    new_question = Question(text=text, choices=",".join(choices), difficulty=difficulty, correct_choice=correct_choice)
+    new_question = Question(text=text, choices=",".join(choices), difficulty=difficulty, correct_choice=correct_choice, explain=explain)
     db.session.add(new_question)
     db.session.commit()
 
@@ -164,8 +166,9 @@ def add_question_manager():
     choices = [request.form.get(f"choice{i}") for i in range(1, 5)]
     difficulty = request.form.get("difficulty")
     correct_choice = int(request.form.get("correct_choice"))
+    explain = request.form.get("explain")
 
-    new_question = Question(text=text, choices=",".join(choices), difficulty=difficulty, correct_choice=correct_choice)
+    new_question = Question(text=text, choices=",".join(choices), difficulty=difficulty, correct_choice=correct_choice, explain=explain)
     db.session.add(new_question)
     db.session.commit()
 
@@ -198,14 +201,16 @@ def update(id):
         choices = [request.form.get(f"choice{i}") for i in range(1, 5)]
         difficulty = request.form.get("difficulty")
         correct_choice = int(request.form.get("correct_choice"))
+        explain = request.form.get("explain")
 
         update_task.text = text
         update_task.choices = ",".join(choices)
         update_task.difficulty = difficulty
         update_task.correct_choice = correct_choice
+        update_task.explain = explain
 
         db.session.commit()
-        return redirect("/questions")
+        return redirect("/questions_manager")
 
 num = 0
 @app.route("/select_difficulty", methods=["GET", "POST"])
@@ -287,16 +292,21 @@ def play_game():
 
 @app.route("/result", methods=["GET", "POST"])
 def result():
-    players = Player.query.all()
-    for each_player in players:
-        if each_player.name == session["player_name"]:
-            player = each_player
-    return render_template("user/result.html",player=player)
+    # プレイヤーのスコアを取得
+    player = Player.query.filter_by(name=session["player_name"]).first()
+
+    # スコアが高い他のプレイヤーの数をカウント
+    higher_score_count = Player.query.filter(Player.score > player.score).count()
+
+    # 順位を計算
+    rank = higher_score_count + 1
+
+    return render_template("user/result.html", player=player, rank=rank)
 
 @app.route("/trueFlse/<string:tf>", methods=["GET", "POST"]) #booleanの型指定の方法
 def trueFalse(tf):
-    return render_template("user/trueFalse.html", tf=tf)
-        #return redirect("/questions_manager")
+    explanation = each_level_questions[num - 1].explain
+    return render_template("user/trueFalse.html", tf=tf, explanation=explanation)
  
 @app.route('/delete_player/<int:id>')
 def delete_player(id):
