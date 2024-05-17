@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<link rel="stylesheet" href="../static/css/index.css">
+<div id="particles-js"></div><br>
+
+<div class="container">
+    <h1>ユーザーログイン</h1>
+    <form action="/login_user" >
+        <input type="submit" value="ログイン">
+    </form>
+</div>
+
+<div class="container">
+    <h1>管理者ログイン</h1>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <form action="/login_manager" method="POST">
+
+        <label for="admin_password">管理者パスワード</label>
+        <input type="password" id="admin_password" name="admin_password" required>
+
+        <input type="submit" value="管理者ログイン">
+    </form>
+</div>
+
+{% endblock %}
