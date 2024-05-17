@@ -2,12 +2,63 @@
 
 {% block body %}
 
-<h1>Select Level</h1>
+<div id="particles-js"></div>
+<link rel="stylesheet" href="../../static/css/difficulty_button.css">
 
+<!--メニューバー-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="../../static/image/secquiz_logo.png" alt="Logo" width="100" height="30"
+                class="d-inline-block align-text-top">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/start_game">StartGame</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/leaderboard">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/questions_user">Question List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add_question_form">Add Question</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav><br>
+
+<!--上部分-->
+<div class="container-sm bg-light rounded-pill" style="width: 800px;"><br>
+    <p class="fs-1 fw-bold text-center">Select Level</p><br>
+    <p class="fs-6 text-center">難易度を選択して下さい</p><br>
+</div><br><br>
+
+<!--難易度選択-->
 <form action="/select_difficulty" method="post">
-    <input type="submit" value="Easy" name="Easy">
-    <input type="submit" value="Normal" name="Normal">
-    <input type="submit" value="Hard" name="Hard">
+    <div class="row">
+        <div class="col">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" class="float3_green" value="Easy" name="Easy">
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" class="float3_blue" value="Normal" name="Normal">
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" class="float3_red" value="Hard" name="Hard">
+            </div>
+        </div>
+    </div>
 </form>
 
 
