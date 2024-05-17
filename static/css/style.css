@@ -43,14 +43,14 @@ h1:after {
 h2 {
   padding: 0.2em;
   display: inline-block;
-  background: #c9b0a7;
+  background: #000000;
   vertical-align: middle;
   border-radius: 25px 0px 0px 25px;
 }
 
 h2:before {
   content: '●';
-  color: white;
+  color: rgb(0, 0, 0);
   margin-right: 8px;
 }
 
@@ -60,7 +60,7 @@ h2:before {
   padding: 4px 16px;
   border-radius: 25px;
   text-decoration: none;
-  color: #FFF;
+  color: #000000;
   background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
   transition: .4s;
 }
