@@ -2,14 +2,59 @@
 
 {% block body %}
 
-<h1>Play Game</h1>
+<link rel="stylesheet" href="../../static/css/background_simple.css">
+<link rel="stylesheet" href="../../static/css/playgame_button.css">
 
-<form action="/play_game" method="post">
-    <h2>問題:{{ question.text }}</h2>
-    <input type="submit" value="1" name="1">{{ choices[0] }}<br>
-    <input type="submit" value="2" name="2">{{ choices[1] }}<br>
-    <input type="submit" value="3" name="3">{{ choices[2] }}<br>
-    <input type="submit" value="4" name="4">{{ choices[3] }}<br>
-</form>
+<!--メニューバー-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="../../static/image/secquiz_logo.png" alt="Logo" width="100" height="30"
+                class="d-inline-block align-text-top">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/start_game">StartGame</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/leaderboard">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/questions_user">Question List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add_question_form">Add Question</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav><br>
+
+<!--上部分-->
+<div class="container-sm bg-light rounded-pill mb" style="width: 800px;"><br>
+    <p class="fs-1 fw-bold text-center">Play Game</p><br>
+</div><br>
+
+<div class="container-sm bg-light" style="width: 1200px;"><br>
+    <form action="/play_game" method="post">
+        <p class="fs-1 fw-bold">問題:{{ question.text }}</p>
+        <div class="fs-4">
+            <input type="submit" class="float2" value="1" name="1"> {{ choices[0] }}
+        </div><br>
+        <div class="fs-4">
+            <input type="submit" class="float2" value="2" name="2"> {{ choices[1] }}
+        </div><br>
+        <div class="fs-4">
+            <input type="submit" class="float2" value="3" name="3"> {{ choices[2] }}
+        </div><br>
+        <div class="fs-4">
+            <input type="submit" class="float2" value="4" name="4"> {{ choices[3] }}
+        </div><br>
+    </form>
+</div>
 
 {% endblock %}
