@@ -3,18 +3,19 @@
 
 <link rel="stylesheet" href="../static/css/background_simple.css">
 <link rel="stylesheet" href="../static/css/button.css">
+<link rel="stylesheet" href="../static/css/yajirusi_button.css">
 
 <!--メニューバー-->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:5000/">
+        <a class="navbar-brand" href="/user">
             <img src="../static/image/secquiz_logo.png" alt="Logo" width="100" height="30"
                 class="d-inline-block align-text-top">
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="http://127.0.0.1:5000/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/user">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/start_game">StartGame</a>
@@ -33,7 +34,7 @@
 <!--上部分-->
 <div class="container-sm bg-light" style="width: 800px;"><br>
     <p class="fs-1 fw-bold text-center">Add New Question</p><br>
-    <p class="fs-6 border-bottom">説明の欄</p><br>
+    <p class="fs-6 border-bottom text-center">ここでは問題を作成して，追加することができます．</p><br>
 
     <!--ボタン色々-->
     <form action="/add_question_user" method="POST">
@@ -92,8 +93,9 @@
             <input type="submit" class="float3_red" name="submit" value="Add Question">
         </div>
     </form><br>
-
-    <a href="/user">Back to Home</a>
+    <div class="text-center">
+        <a href="/user" class="button mb_top">Back to Home</a>
+    </div><br>
 </div>
 
 {% endblock %}
