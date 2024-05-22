@@ -1,0 +1,17 @@
+/*== 影が拡がって浮き上がる */
+
+/*ボタンの形状*/
+.float2{
+    background: #fff;
+    border: 1px solid #2d8d04;
+    color: #2d8d04;
+    padding:10px 20px;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    width: 50px;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1) ;
+    /*アニメーションの設定*/
+    transition: all .3s;
+}

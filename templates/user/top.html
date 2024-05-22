@@ -3,20 +3,28 @@
 {% block body %}
 
 <div id="particles-js"></div>
+<link rel="stylesheet" href="../static/css/button.css">
 
 <div id="wrapper">
     <!--ボタン配置-->
-    <div class="container-sm bg-light" style="width: 800px;">
+    <div class="container-sm bg-light rounded" style="width: 800px;">
         <div class="d-grid gap-2 col-6 mx-auto">
+<<<<<<< HEAD
+            <img src="../../static/image/secquiz_logo_transparent.png" width="400" height="300">
+            <a class="float3_blue" href="/start_game" role="button">ゲームスタート</a><br>
+            <a class="float3_green" href="/leaderboard_user" role="button">リーダーボード</a><br>
+            <a class="float3_default" href="/questions_user" role="button">問題リスト</a><br>
+            <a class="float3_red" href="/add_questions_user" role="button">問題追加</a><br>
+=======
             <img src="../static/image/key_logo.png" class="rounded mx-auto d-block" width="300" height="250">
             <img src="../static/image/secquiz_logo.png">
             <a class="float3_blue" href="/start_game" role="button">Start Game</a><br>
             <a class="float3_green" href="/leaderboard_user" role="button">Leaderboard</a><br>
             <a class="float3_red" href="/add_questions_user" role="button">Add Question</a><br>
             <a href="/questions_user"><button>問題リスト</button></a><br>
+>>>>>>> main
         </div>
     </div>
-    <!--/wrapper-->
 </div>
 
 {% endblock %}

@@ -1,0 +1,13 @@
+・ラジオボタン色付け
+<div class="difiiculty_radio">
+    <input type="radio" name="difiiculty" id="select_easy" value="easy" checked="">
+    <label for="select_easy">easy</label>
+    <input type="radio" name="difiiculty" id="select_normal" value="normal">
+    <label for="select_normal">normal</label>
+    <input type="radio" name="difiiculty" id="select_hard" value="hard">
+    <label for="select_hard">hard</label>
+</div><br>
+
+<div class="form-group row justify-content-center">
+    <input type="submit" class="float3_blue" name="submit" value="Start">
+</div>
