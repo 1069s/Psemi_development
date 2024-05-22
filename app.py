@@ -86,21 +86,26 @@ id = 0
 @app.route("/start_game", methods=["GET", "POST"])
 def start_game():
     if request.method == "POST":
-        name = request.form.get('name')
+        if request.form.get('new_name') != "":
+            name = request.form.get('new_name')
 
-        existing_player = Player.query.filter_by(name=name).first()
-        if existing_player:
-            global error_message
-            error_message = 'この名前のプレイヤーは既に登録されています。別の名前を選んでください。'
-            #session['error_message'] = error_message
-            #error_message = session.pop('error_message', None)
-            return redirect("/start_game")
+            existing_player = Player.query.filter_by(name=name).first()
+            if existing_player:
+                global error_message
+                error_message = 'この名前のプレイヤーは既に登録されています。別の名前を選んでください。'
+                #session['error_message'] = error_message
+                #error_message = session.pop('error_message', None)
+                return redirect("/start_game")
 
-        # Register new player
-        new_player = Player(name=name)
-        db.session.add(new_player)
-        session["player_name"] = name
-        db.session.commit()
+            # Register new player
+            new_player = Player(name=name)
+            db.session.add(new_player)
+            session["player_name"] = name
+            db.session.commit()
+        else:
+            name = request.form.get('name')
+            session["player_name"] = name
+            db.session.commit()
         return redirect("/select_difficulty")
     return render_template("user/start_game.html", error_message=error_message)
    
@@ -192,6 +197,7 @@ def select_difficulty_decision():
 
 each_level_questions = []
 choices_list = []
+pre_score = 0
 @app.route("/play_game", methods=["GET", "POST"])
 def play_game():
     global num
@@ -235,6 +241,9 @@ def play_game():
             for each_player in players:
                 if each_player.name == session["player_name"]:
                     player = each_player
+            if num == 0:
+                global pre_score
+                pre_score = player.score
             if difficulty[0] == "Easy":
                 player.score += 10
             elif difficulty[0] == "Normal":
@@ -264,6 +273,9 @@ def result():
     higher_score_count = Player.query.filter(Player.score > player.score).count()
     # 順位を計算
     rank = higher_score_count + 1
+    if pre_score > player.score:
+        player.score = pre_score
+        db.session.commit()
 
     return render_template("user/result.html", player=player, rank=rank)
 
