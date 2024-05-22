@@ -43,11 +43,13 @@
     <div class="">
         <table class="table table-striped-columns">
             <tr>
-                <th>Name</th>
-                <th>Score</th>
+                <th>順位</th>
+                <th>名前</th>
+                <th>点数</th>
             </tr>
-            {% for player in players %}
+            {% for rank, player in ranked_players %}
             <tr>
+                <td>{{ rank }}位</td>
                 <td>{{ player.name }}</td>
                 <td>{{ player.score }}</td>
             </tr>

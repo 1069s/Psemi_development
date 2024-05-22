@@ -61,8 +61,20 @@ def login_manager():
 
 @app.route("/leaderboard_user")
 def leaderboard_user():
+    # players = Player.query.order_by(Player.score.desc()).all()
+     # 得点の高い順にプレイヤーを取得
     players = Player.query.order_by(Player.score.desc()).all()
-    return render_template("user/leaderboard.html", players=players)
+    # 順位付けを行う
+    ranked_players = []
+    current_rank = 1
+    current_score = None
+
+    for player in players:
+        if player.score != current_score:
+            current_rank = len(ranked_players) + 1
+        ranked_players.append((current_rank, player))
+        current_score = player.score
+    return render_template("user/leaderboard.html", ranked_players=ranked_players)
 
 @app.route("/leaderboard_manager")
 def leaderboard_manager():
