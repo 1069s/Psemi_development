@@ -1,0 +1,19 @@
+.button {
+    position: relative;
+    padding: 10px 50px;
+    color: #fff;
+    border-radius: 50vh;
+    background-color: #2554f0;
+    text-decoration: none;
+  }
+  .button::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: translate(0, -50%) rotate(45deg);
+  }

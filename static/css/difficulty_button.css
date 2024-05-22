@@ -1,0 +1,84 @@
+/*== 上に移動し影がついて浮き上がる */
+
+/*ボタンの形状*/
+.float3_red {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    outline: none;
+    transition: all .3s;
+    line-height: 1;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #d40b19;
+    background: #fff;
+    color: #d40b19;
+    cursor: pointer;
+}
+
+.float3_blue {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    outline: none;
+    transition: all .3s;
+    line-height: 1;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #04168d;
+    background: #fff;
+    color: #04168d;
+    cursor: pointer;
+}
+
+.float3_green {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    outline: none;
+    transition: all .3s;
+    line-height: 1;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #2d8d04;
+    background: #fff;
+    color: #2d8d04;
+    cursor: pointer;
+}
+
+/*hoverをしたらボックスに影がつき、上に上がる*/
+.float3_red:hover {
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.float3_blue:hover {
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.float3_green:hover {
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.float3_default:hover {
+    top: -3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.mb {
+    margin-bottom: 10em;
+}
