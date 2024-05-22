@@ -46,8 +46,24 @@
     {% endif %}
     <form action="/start_game" method="post">
         <div class="mb-3">
+            <h3>新規登録</h3>
+            <input type="text" class="form-control" id="new_name" name="new_name" placeholder="Enter your name" ><!--required属性を消した-->
+            <h3>再挑戦</h3>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" ><!--required属性を消した-->
+        </div>
+        <div class="form-group row justify-content-center">
+            <input type="submit" name="next" value="next">
+        </div>
+
+         <!-- <div class="difiiculty_radio">
+            <input type="radio" name="difiiculty" id="select_easy" value="easy" checked="">
+            <label for="select_easy">easy</label>
+            <input type="radio" name="difiiculty" id="select_normal" value="normal">
+            <label for="select_normal">normal</label>
+            <input type="radio" name="difiiculty" id="select_hard" value="hard">
+            <label for="select_hard">hard</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-        </div><br>
+        </div><br> -->
     </form>
 </div>
 

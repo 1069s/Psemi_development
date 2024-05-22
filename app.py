@@ -94,25 +94,37 @@ def leaderboard_manager():
     return render_template('manager/leaderboard.html', ranked_players=ranked_players)
 
 id = 0
-
+new_re=0
 @app.route("/start_game", methods=["GET", "POST"])
 def start_game():
     if request.method == "POST":
-        name = request.form.get('name')
+        if request.form.get('new_name') != "":
+            global new_re
+            new_re=0
+            name = request.form.get('new_name')
 
-        existing_player = Player.query.filter_by(name=name).first()
-        if existing_player:
-            global error_message
-            error_message = 'この名前のプレイヤーは既に登録されています。別の名前を選んでください。'
-            #session['error_message'] = error_message
-            #error_message = session.pop('error_message', None)
-            return redirect("/start_game")
+            existing_player = Player.query.filter_by(name=name).first()
+            if existing_player:
+                global error_message
+                error_message = 'この名前のプレイヤーは既に登録されています。別の名前を選んでください。'
+                #session['error_message'] = error_message
+                #error_message = session.pop('error_message', None)
+                return redirect("/start_game")
 
-        # Register new player
-        new_player = Player(name=name)
-        db.session.add(new_player)
-        session["player_name"] = name
-        db.session.commit()
+            # Register new player
+            new_player = Player(name=name)
+            db.session.add(new_player)
+            session["player_name"] = name
+            db.session.commit()
+        else:
+            name = request.form.get('name')
+            new_re=1
+            existing_player = Player.query.filter_by(name=name).first()
+            if not existing_player:
+                error_message = 'この名前のプレイヤーは未登録です。'
+                return redirect("/start_game")
+            session["player_name"] = name
+            db.session.commit()
         return redirect("/select_difficulty")
     return render_template("user/start_game.html", error_message=error_message)
    
@@ -204,6 +216,7 @@ def select_difficulty_decision():
 
 each_level_questions = []
 choices_list = []
+pre_score = 0
 @app.route("/play_game", methods=["GET", "POST"])
 def play_game():
     global num
@@ -241,12 +254,16 @@ def play_game():
         print(each_level_questions[num].correct_choice)
         print(selected_choice[each_level_questions[num].correct_choice-1])
         print(selected_choice[each_level_questions[num].correct_choice-1] == str(each_level_questions[num].correct_choice))
+        players = Player.query.all()
+        for each_player in players:
+            if each_player.name == session["player_name"]:
+                player = each_player
+        if num == 0:
+            global pre_score
+            pre_score = player.score
+            player.score=0
         if selected_choice[each_level_questions[num].correct_choice-1] == str(each_level_questions[num].correct_choice):
             #player = Player.query.filter_by(name=session["player_name"]).first()
-            players = Player.query.all()
-            for each_player in players:
-                if each_player.name == session["player_name"]:
-                    player = each_player
             if difficulty[0] == "Easy":
                 player.score += 10
             elif difficulty[0] == "Normal":
@@ -272,12 +289,19 @@ def play_game():
 def result():
     # プレイヤーのスコアを取得
     player = Player.query.filter_by(name=session["player_name"]).first()
+    # 順位を計算
+    global pre_score
+    save_pre_score = pre_score
+    save_this_score = player.score
     # スコアが高い他のプレイヤーの数をカウント
     higher_score_count = Player.query.filter(Player.score > player.score).count()
-    # 順位を計算
     rank = higher_score_count + 1
+    if pre_score > player.score:
+        player.score = pre_score
+        db.session.commit()
 
-    return render_template("user/result.html", player=player, rank=rank)
+    global new_re
+    return render_template("user/result.html", player=player, rank=rank, save_pre_score=save_pre_score, new_re=new_re, save_this_score=save_this_score)
 
 @app.route("/trueFlse/<string:tf>", methods=["GET", "POST"]) #booleanの型指定の方法
 def trueFalse(tf):
