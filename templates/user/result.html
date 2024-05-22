@@ -3,7 +3,11 @@
 {% block body %}
 
 <h1>Result</h1>
-<h2>Score : {{ player.score }}Points!</h2>
+<h2>This Score : {{ save_this_score }}Points!</h2>
+{% if new_re==1 %}
+<h2>Previous Score : {{ save_pre_score }}Points!</h2>
+{% endif %}
+<h2>Current Score : {{ player.score }}Points!</h2>
 <h2>Rank : {{ rank }}</h2>
 <a href="/user"><button>トップへ</button></a>
 
