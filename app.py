@@ -277,12 +277,12 @@ def play_game():
 def result():
     # プレイヤーのスコアを取得
     player = Player.query.filter_by(name=session["player_name"]).first()
-    # スコアが高い他のプレイヤーの数をカウント
-    higher_score_count = Player.query.filter(Player.score > player.score).count()
     # 順位を計算
     global pre_score
     save_pre_score = pre_score
     save_this_score = player.score
+    # スコアが高い他のプレイヤーの数をカウント
+    higher_score_count = Player.query.filter(Player.score > player.score).count()
     rank = higher_score_count + 1
     if pre_score > player.score:
         player.score = pre_score
