@@ -40,8 +40,14 @@
     <p class="fs-1 fw-bold text-center">Result</p><br>
 </div><br>
 
+
 <div class="container-sm bg-light" style="width: 800px;"><br>
-    <p class="fs-3 fw-bold text-center">Your score is {{ player.score }}!</p>
+    <p class="fs-3 fw-bold text-center"><h2>This Score : {{ save_this_score }}Points!</h2>
+        {% if new_re==1 %}
+        <h2>Previous Score : {{ save_pre_score }}Points!</h2>
+        {% endif %}
+        <h2>Current Score : {{ player.score }}Points!</h2>
+        <h2>Rank : {{ rank }}</h2>
     <div class="text-center"><a href="/user" class="button ">トップへ</a></div><br>
 </div>
 
