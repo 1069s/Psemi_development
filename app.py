@@ -106,7 +106,6 @@ def start_game():
             name = request.form.get('name')
             existing_player = Player.query.filter_by(name=name).first()
             if not existing_player:
-                global error_message
                 error_message = 'この名前のプレイヤーは未登録です。'
                 return redirect("/start_game")
             session["player_name"] = name
