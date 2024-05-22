@@ -66,5 +66,33 @@
     </div><br>
 </div>
 
+<<<<<<< HEAD
+=======
+<h1>問題リスト</h1> 
+<table>
+    <thead>
+        <tr>
+            <th>問題番号</th>
+            <th>問題文</th>
+            <th>選択肢</th>
+            <th>難易度</th>
+            <th>正解番号</th>
+            <th>解説</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.text }}</td>
+            <td>{{ question.choices }}</td>
+            <td>{{ question.difficulty }}</td>
+            <td>{{ question.correct_choice }}</td>
+            <td>{{ question.explain }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+>>>>>>> main
 
 {% endblock %}

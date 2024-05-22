@@ -30,6 +30,9 @@
         {% endfor %}
     </select><br>
 
+    <label for="explain">解説文:</label><br>
+    <textarea name="explain" id="explain" required>{{ question.explain }}</textarea><br>
+
     <input type="submit" value="Update Question">
 </form>
 <a href="/manager">Back to Home</a>

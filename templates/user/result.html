@@ -2,6 +2,7 @@
 
 {% block body %}
 
+<<<<<<< HEAD
 <div id="particles-js"></div>
 <link rel="stylesheet" href="../../static/css/background.css">
 <link rel="stylesheet" href="../../static/css/yajirusi_button.css">
@@ -44,5 +45,11 @@
     <p class="fs-3 fw-bold text-center">Your score is {{ player.score }}!</p>
     <div class="text-center"><a href="/user" class="button ">トップへ</a></div><br>
 </div>
+=======
+<h1>Result</h1>
+<h2>Score : {{ player.score }}Points!</h2>
+<h2>Rank : {{ rank }}</h2>
+<a href="/user"><button>トップへ</button></a>
+>>>>>>> main
 
 {% endblock %}
