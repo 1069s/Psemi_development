@@ -251,8 +251,7 @@ def play_game():
     #question = Question.query.filter_by(Question.query.difficulty==difficulty[0])
 
     # if num >= len(each_level_questions):
-    if num >= len(each_level_questions):
-        return redirect("/result")
+
     if request.method == "POST": 
         selected_choice = []
         tf="False"
@@ -287,13 +286,19 @@ def play_game():
             print("correct!")
             print(num)
             num += 1
-            return redirect(url_for('trueFalse', tf=tf)) 
+            if num >= len(each_level_questions):
+                return redirect("/result")
+            else:
+                return redirect(url_for('trueFalse', tf=tf)) 
         else:
             tf="False" 
             print(num)
             print("oops!")
             num += 1
-            return redirect(url_for('trueFalse', tf=tf)) 
+            if num >= len(each_level_questions):
+                return redirect("/result")
+            else:
+                return redirect(url_for('trueFalse', tf=tf)) 
     return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num])
 
 @app.route("/result", methods=["GET", "POST"])
