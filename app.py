@@ -290,7 +290,7 @@ def play_game():
             if num >= len(each_level_questions):
                 return redirect("/result")
             else:
-                return redirect(url_for('trueFalse', tf=tf)) 
+                return redirect(url_for('trueFalse', tf=tf, correct=correct_choice_text)) 
         else:
             tf="False" 
             print(num)
@@ -300,7 +300,7 @@ def play_game():
             if num >= len(each_level_questions):
                 return redirect("/result")
             else:
-                return redirect(url_for('trueFalse', tf=tf)) 
+                return redirect(url_for('trueFalse', tf=tf, correct=correct_choice_text)) 
     return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num])
 
 @app.route("/result", methods=["GET", "POST"])
