@@ -2,11 +2,12 @@
 
 {% block body %}
 
-<link rel="stylesheet" href="../../static/css/background_simple.css">
+<div id="particles-js"></div>
 <link rel="stylesheet" href="../../static/css/yajirusi_button.css">
+<link rel="stylesheet" type="text/css" href="../../static/css/acordion.css">
 
 <!--メニューバー-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary mb10">
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="../../static/image/secquiz_logo.png" alt="Logo" width="100" height="30"
@@ -34,16 +35,30 @@
     </div>
 </nav><br>
 
-<!--上部分-->
-<div class="container-sm bg-light rounded-pill mb" style="width: 400px;"><br>
-    <p class="fs-1 fw-bold text-center">{{ tf }}!</p><br>
-</div><br>
-
 <div class="container-sm bg-light" style="width: 800px;"><br>
-    <p class="fs-3 fw-bold text-center">解説</p>
-    <div class="mb">
-
+    {% if tf == "True" %}
+    <div class="text-center">
+        <img src="../../static/image/maru.png" width="150" height="150">
+        <p class="fs-1 fw-bold text-center text-success">{{ tf }}!</p><br>
     </div>
+    {% else %}
+    <div class="text-center">
+        <img src="../../static/image/batu.png" width="200" height="150">
+        <p class="fs-1 fw-bold text-center text-danger">{{ tf }}!</p><br>
+    </div>
+    {% endif %}
+
+    <ul class="accordion-area">
+        <li><!--li ~ /li までが一つのアコーディオン-->
+            <section>
+                <h3 class="title">解説</h3>
+                <div class="box">
+                    <p>解説が入る</p>
+                </div>
+            </section>
+        </li>
+    </ul>
+
     <div class="text-center"><a href="/play_game" class="button ">次へ</a></div><br>
 </div>
 
