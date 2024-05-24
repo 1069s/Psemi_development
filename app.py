@@ -285,6 +285,7 @@ def play_game():
             tf="True" 
             print("correct!")
             print(num)
+            correct_choice_text = choices_list[num][each_level_questions[num].correct_choice - 1]
             num += 1
             if num >= len(each_level_questions):
                 return redirect("/result")
@@ -294,6 +295,7 @@ def play_game():
             tf="False" 
             print(num)
             print("oops!")
+            correct_choice_text = choices_list[num][each_level_questions[num].correct_choice - 1]
             num += 1
             if num >= len(each_level_questions):
                 return redirect("/result")
@@ -321,8 +323,9 @@ def result():
 
 @app.route("/trueFlse/<string:tf>", methods=["GET", "POST"]) #booleanの型指定の方法
 def trueFalse(tf):
+    correct = request.args.get('correct')
     explanation = each_level_questions[num - 1].explain
-    return render_template("user/trueFalse.html", tf=tf, explanation=explanation, question=each_level_questions[num])
+    return render_template("user/trueFalse.html", tf=tf, explanation=explanation, question=each_level_questions[num - 1], correct=correct)
  
 @app.route('/delete_player/<int:id>')
 def delete_player(id):
