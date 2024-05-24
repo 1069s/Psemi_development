@@ -43,16 +43,40 @@
     <form action="/play_game" method="post">
         <p class="fs-1 fw-bold">問題:{{ question.text }}</p>
         <div class="fs-4">
-            <input type="submit" class="float2" value="1" name="1"> {{ choices[0] }}
+            {% if question.difficulty == "Easy" %}
+            <input type="submit" class="button_easy" value="1" name="1"> {{ choices[0] }}
+            {% elif question.difficulty == "Normal" %}
+            <input type="submit" class="button_normal" value="1" name="1"> {{ choices[0] }}
+            {% else %}
+            <input type="submit" class="button_hard" value="1" name="1"> {{ choices[0] }}
+            {% endif %}
         </div><br>
         <div class="fs-4">
-            <input type="submit" class="float2" value="2" name="2"> {{ choices[1] }}
+            {% if question.difficulty == "Easy" %}
+            <input type="submit" class="button_easy" value="2" name="2"> {{ choices[1] }}
+            {% elif question.difficulty == "Normal" %}
+            <input type="submit" class="button_normal" value="2" name="2"> {{ choices[1] }}
+            {% else %}
+            <input type="submit" class="button_hard" value="2" name="2"> {{ choices[1] }}
+            {% endif %}
         </div><br>
         <div class="fs-4">
-            <input type="submit" class="float2" value="3" name="3"> {{ choices[2] }}
+            {% if question.difficulty == "Easy" %}
+            <input type="submit" class="button_easy" value="3" name="3"> {{ choices[2] }}
+            {% elif question.difficulty == "Normal" %}
+            <input type="submit" class="button_normal" value="3" name="3"> {{ choices[2] }}
+            {% else %}
+            <input type="submit" class="button_hard" value="3" name="3"> {{ choices[2] }}
+            {% endif %}
         </div><br>
         <div class="fs-4">
-            <input type="submit" class="float2" value="4" name="4"> {{ choices[3] }}
+            {% if question.difficulty == "Easy" %}
+            <input type="submit" class="button_easy" value="4" name="4"> {{ choices[3] }}
+            {% elif question.difficulty == "Normal" %}
+            <input type="submit" class="button_normal" value="4" name="4"> {{ choices[3] }}
+            {% else %}
+            <input type="submit" class="button_hard" value="4" name="4"> {{ choices[3] }}
+            {% endif %}
         </div><br>
     </form>
 </div><br>
