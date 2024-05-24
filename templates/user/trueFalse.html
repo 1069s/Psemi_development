@@ -53,15 +53,19 @@
             <section>
                 <h3 class="title">問題</h3>
                 <div class="box">
-                    問題：{{ question.text }}
+                    {{ question.text }}
                 </div>
                 <h3 class="title">正解</h3>
                 <div class="box">
-                    正解：{{ question.correct_choice }}. {{ correct }}
+                    {{ question.correct_choice }}. {{ correct }}
                 </div>
+            </section>
+        </li>
+        <li><!--li ~ /li までが一つのアコーディオン-->
+            <section>
                 <h3 class="title">解説</h3>
                 <div class="box">
-                    解説：{{ explanation }}
+                    {{ explanation }}
                 </div>
             </section>
         </li>
