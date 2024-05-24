@@ -36,20 +36,17 @@
 </nav><br>
 
 <!--上部分-->
-<div class="container-sm bg-light rounded-pill mb" style="width: 400px;"><br>
-    <p class="fs-1 fw-bold text-center">Result</p><br>
+<div class="container-sm bg-light rounded-pill" style="width: 400px;"><br>
+    <p class="fs-1 fw-bold text-center">結果</p><br>
 </div><br>
 
 
-<div class="container-sm bg-light" style="width: 800px;"><br>
-    <p class="fs-3 fw-bold text-center">
-        <p class="fs-2 fw-bold text-center">This Score : {{ save_this_score }}Points!</p>
-        <p class="fs-2 fw-bold text-center">Rank : {{ rank }}</p>
-        {% if new_re==1 %}
-        <p class="fs-5 fw-bold text-center">Previous Score : {{ save_pre_score }}Points!</p>
-        {% endif %}
-        <p class="fs-5 fw-bold text-center">Current Score : {{ player.score }}Points!</p><br>
-        
+<div class="container-sm bg-light text-center" style="width: 800px;"><br>
+    <p class="fs-3 fw-bold">今回のスコア : {{ save_this_score }} Points!</p>
+    <p class="fs-3 fw-bold">ランク : {{ rank }}</p>
+    {% if new_re==1 %}
+    <p class="fs-4 fw-bold">前回のスコア : {{ save_pre_score }} Points!</p>
+    {% endif %}
     <div class="text-center"><a href="/user" class="button ">トップへ</a></div><br>
 </div>
 
