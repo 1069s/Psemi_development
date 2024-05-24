@@ -61,7 +61,6 @@ def login_manager():
 
 @app.route("/leaderboard_user")
 def leaderboard_user():
-    # players = Player.query.order_by(Player.score.desc()).all()
      # 得点の高い順にプレイヤーを取得
     players = Player.query.order_by(Player.score.desc()).all()
     # 順位付けを行う
@@ -98,6 +97,8 @@ new_re=0
 @app.route("/start_game", methods=["GET", "POST"])
 def start_game():
     if request.method == "POST":
+        global error_message
+        error_message = ""
         if request.form.get('new_name') != "":
             global new_re
             new_re=0
@@ -105,7 +106,6 @@ def start_game():
 
             existing_player = Player.query.filter_by(name=name).first()
             if existing_player:
-                global error_message
                 error_message = 'この名前のプレイヤーは既に登録されています。別の名前を選んでください。'
                 #session['error_message'] = error_message
                 #error_message = session.pop('error_message', None)
@@ -168,12 +168,22 @@ def add_question_manager():
 @app.route("/questions_user")
 def list_questions():
     questions = Question.query.all() 
-    return render_template("user/question_list.html", questions=questions)
+    number = 0
+    numque =[]
+    for question in questions:
+        number = number + 1
+        numque.append((number,question))
+    return render_template("user/question_list.html", numque=numque)
 
 @app.route("/questions_manager")
 def list_questions_manager():
     questions = Question.query.all() 
-    return render_template("manager/question_list.html", questions=questions)
+    number = 0
+    numque =[]
+    for question in questions:
+        number = number + 1
+        numque.append((number,question))
+    return render_template("manager/question_list.html", numque=numque)
 
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -241,8 +251,7 @@ def play_game():
     #question = Question.query.filter_by(Question.query.difficulty==difficulty[0])
 
     # if num >= len(each_level_questions):
-    if num >= 5:
-        return redirect("/result")
+
     if request.method == "POST": 
         selected_choice = []
         tf="False"
@@ -276,14 +285,22 @@ def play_game():
             tf="True" 
             print("correct!")
             print(num)
+            correct_choice_text = choices_list[num][each_level_questions[num].correct_choice - 1]
             num += 1
-            return redirect(url_for('trueFalse', tf=tf)) 
+            if num >= len(each_level_questions):
+                return redirect("/result")
+            else:
+                return redirect(url_for('trueFalse', tf=tf, correct=correct_choice_text)) 
         else:
             tf="False" 
             print(num)
             print("oops!")
+            correct_choice_text = choices_list[num][each_level_questions[num].correct_choice - 1]
             num += 1
-            return redirect(url_for('trueFalse', tf=tf)) 
+            if num >= len(each_level_questions):
+                return redirect("/result")
+            else:
+                return redirect(url_for('trueFalse', tf=tf, correct=correct_choice_text)) 
     return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num])
 
 @app.route("/result", methods=["GET", "POST"])
@@ -306,8 +323,9 @@ def result():
 
 @app.route("/trueFlse/<string:tf>", methods=["GET", "POST"]) #booleanの型指定の方法
 def trueFalse(tf):
+    correct = request.args.get('correct')
     explanation = each_level_questions[num - 1].explain
-    return render_template("user/trueFalse.html", tf=tf, explanation=explanation)
+    return render_template("user/trueFalse.html", tf=tf, explanation=explanation, question=each_level_questions[num - 1], correct=correct)
  
 @app.route('/delete_player/<int:id>')
 def delete_player(id):

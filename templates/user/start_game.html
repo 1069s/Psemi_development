@@ -3,6 +3,7 @@
 {% block body %}
 
 <div id="particles-js"></div>
+<link rel="stylesheet" href="../../static/css/submitbutton.css">
 
 <!--メニューバー-->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -36,11 +37,13 @@
 <!--上部分-->
 <div class="container-sm bg-light rounded-pill" style="width: 800px;"><br>
     <p class="fs-1 fw-bold text-center">Start Game</p><br>
-    <p class="fs-6 text-center">ユーザー名を入力してください</p><br>
+    <p class="fs-6 text-center">ユーザ名を新規登録し、Eacy・Normal・Hardから好きな難易度を選択してクイズに挑戦しよう！</p><br>
+    <p class="fs-6 text-center">再挑戦欄に前回挑戦時のユーザ名を入力すると再挑戦ができるよ</p><br>
 </div><br>
 
 <!--名前入力フォーム-->
 <div class="container-sm bg-light" style="width: 800px;"><br>
+    <p class="fs-6 text-center">ユーザー名を入力してください</p><br>
     {% if error_message %}
     <p style="color: red;">{{ error_message }}</p>
     {% endif %}
@@ -52,8 +55,8 @@
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" ><!--required属性を消した-->
         </div>
         <div class="form-group row justify-content-center">
-            <input type="submit" name="next" value="next">
-        </div>
+            <input type="submit" name="next" value="next" class="button" style="width: 200px;">
+        </div><br>
     </form>
 </div>
 

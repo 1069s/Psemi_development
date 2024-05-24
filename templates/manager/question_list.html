@@ -50,9 +50,9 @@
             </tr>
         </thead>
         <tbody>
-            {% for question in questions %}
+            {% for number, question in numque %}
             <tr>
-                <td>{{ question.id }}</td>
+                <td>{{ number }}</td>
                 <td>{{ question.text }}</td>
                 <td>{{ question.choices }}</td>
                 <td>{{ question.difficulty }}</td>

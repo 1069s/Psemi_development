@@ -33,33 +33,47 @@
             </ul>
         </div>
     </div>
-</nav><br>
+</nav>
 
 <div class="container-sm bg-light" style="width: 800px;"><br>
     {% if tf == "True" %}
     <div class="text-center">
         <img src="../../static/image/maru.png" width="150" height="150">
-        <p class="fs-1 fw-bold text-center text-success">{{ tf }}!</p><br>
+        <p class="fs-1 fw-bold text-center text-danger">正解!!!</p><br>
     </div>
     {% else %}
     <div class="text-center">
-        <img src="../../static/image/batu.png" width="200" height="150">
-        <p class="fs-1 fw-bold text-center text-danger">{{ tf }}!</p><br>
+        <img src="../../static/image/batu_blue.png" width="250" height="180">
+        <p class="fs-1 fw-bold text-center text-primary">不正解...</p><br>
     </div>
     {% endif %}
 
     <ul class="accordion-area">
         <li><!--li ~ /li までが一つのアコーディオン-->
             <section>
-                <h3 class="title">解説</h3>
+                <h3 class="title">問題</h3>
                 <div class="box">
-                    <p>解説が入る</p>
+                    {{ question.text }}
+                </div>
+                <h3 class="title">正解</h3>
+                <div class="box">
+                    {{ question.correct_choice }}. {{ correct }}
                 </div>
             </section>
         </li>
-    </ul>
+        <li><!--li ~ /li までが一つのアコーディオン-->
+            <section>
+                <h3 class="title">解説</h3>
+                <div class="box">
+                    {{ explanation }}
+                </div>
+            </section>
+        </li>
+    </ul><br>
 
-    <div class="text-center"><a href="/play_game" class="button ">次へ</a></div><br>
+    <div class="text-center">
+        <a href="/play_game" class="button ">次へ</a>
+    </div><br>
 </div>
 
 {% endblock %}

@@ -1,0 +1,144 @@
+/*easyボタン*/
+/************************************************************************************************************************/
+.button_easy {
+    background: #ffffff;
+    color: #2d8d04;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 40px;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    border-radius: 100px;
+}
+
+.button_easy:hover {
+    background: #2d8d04;
+    color: #ffffff;
+}
+
+.button_easy:before,
+.button_easy:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #1a6aab;
+    transition: 400ms ease all;
+}
+
+.button_easy:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.button_easy:hover:before,
+.button_easy:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+/************************************************************************************************************************/
+
+/*normalボタン*/
+/************************************************************************************************************************/
+.button_normal {
+    background: #ffffff;
+    color: #04168d;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 40px;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    border-radius: 100px;
+}
+
+.button_normal:hover {
+    background: #04168d;
+    color: #ffffff;
+}
+
+.button_normal:before,
+.button_normal:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #1a6aab;
+    transition: 400ms ease all;
+}
+
+.button_normal:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.button_normal:hover:before,
+.button_normal:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+/************************************************************************************************************************/
+
+/*hardボタン*/
+/************************************************************************************************************************/
+.button_hard {
+    background: #ffffff;
+    color: #d40b19;
+    border: none;
+    position: relative;
+    height: 60px;
+    font-size: 40px;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    border-radius: 100px;
+}
+
+.button_hard:hover {
+    background: #d40b19;
+    color: #ffffff;
+}
+
+.button_hard:before,
+.button_hard:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #1a6aab;
+    transition: 400ms ease all;
+}
+
+.button_hard:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.button_hard:hover:before,
+.button_hard:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+/************************************************************************************************************************/
+
+.mb {
+    margin-bottom: 10em;
+}

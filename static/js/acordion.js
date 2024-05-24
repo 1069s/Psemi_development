@@ -10,7 +10,6 @@ $('.title').on('click', function() {//タイトル要素をクリックしたら
 	}
 });
 
-//ページが読み込まれた際にopenクラスをつけ、openがついていたら開く動作※不必要なら下記全て削除
 $(window).on('load', function(){
 	$('.accordion-area li:first-of-type section').addClass("open"); //accordion-areaのはじめのliにあるsectionにopenクラスを追加
 	$(".open").each(function(index, element){	//openクラスを取得
