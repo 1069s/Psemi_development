@@ -97,6 +97,8 @@ new_re=0
 @app.route("/start_game", methods=["GET", "POST"])
 def start_game():
     if request.method == "POST":
+        global error_message
+        error_message = ""
         if request.form.get('new_name') != "":
             global new_re
             new_re=0
@@ -104,7 +106,6 @@ def start_game():
 
             existing_player = Player.query.filter_by(name=name).first()
             if existing_player:
-                global error_message
                 error_message = 'この名前のプレイヤーは既に登録されています。別の名前を選んでください。'
                 #session['error_message'] = error_message
                 #error_message = session.pop('error_message', None)
