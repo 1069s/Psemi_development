@@ -294,7 +294,7 @@ def play_game():
             print("oops!")
             num += 1
             return redirect(url_for('trueFalse', tf=tf)) 
-    return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num], difficulty=difficulty[0])
+    return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num])
 
 @app.route("/result", methods=["GET", "POST"])
 def result():
