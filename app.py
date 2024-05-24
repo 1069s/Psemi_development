@@ -316,7 +316,7 @@ def result():
 @app.route("/trueFlse/<string:tf>", methods=["GET", "POST"]) #booleanの型指定の方法
 def trueFalse(tf):
     explanation = each_level_questions[num - 1].explain
-    return render_template("user/trueFalse.html", tf=tf, explanation=explanation)
+    return render_template("user/trueFalse.html", tf=tf, explanation=explanation, question=each_level_questions[num])
  
 @app.route('/delete_player/<int:id>')
 def delete_player(id):
