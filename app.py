@@ -240,6 +240,7 @@ def play_game():
     print(choices_list)
     #question = Question.query.filter_by(Question.query.difficulty==difficulty[0])
 
+    # if num >= len(each_level_questions):
     if num >= 5:
         return redirect("/result")
     if request.method == "POST": 
