@@ -1,0 +1,45 @@
+/*add*/
+  /*************************************************************************************************************/
+  .button_add {
+    background: #fcfffd;
+    color: #f93328;
+    border: 1px solid #f93328;
+    position: relative;
+    height: 60px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    border-radius: 100px;
+}
+
+.button_add:hover {
+    background: #f93328;
+    color: #fff;
+}
+
+.button_add:before,
+.button_add:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #f93328;
+    transition: 400ms ease all;
+}
+
+.button_add:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+.button_add:hover:before,
+.button_add:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
