@@ -3,8 +3,7 @@
 {% block body %}
 
 <div id="particles-js"></div>
-<link rel="stylesheet" href="../../static/css/button.css">
-<link rel="stylesheet" href="../../static/css/yajirusi.css">
+<link rel="stylesheet" href="../../static/css/iketeru_button.css">
 
 <style>
     .example {
@@ -16,31 +15,35 @@
     }
 </style>
 
-<a href="/" role="button">
-    <img src="../../static/image/ターン・バックするの矢印アイコン素材 2.png" width="50">
-</a>
+
 
 <div id="wrapper">
     <!--ボタン配置-->
+
     <div class="container-sm bg-light rounded" style="width: 800px;">
+
         <img src="../../static/image/secquiz_logo_transparent.png" width="400" height="300">
-        <div class="text-center">
-            <a class="float3_blue" href="/start_game" role="button" style="width: 300px; height: 70px;">
+        <div class="text-center fw-bold">
+            <a href="/start_game" class="button_start" role="button" style="width: 400px; height: 80px;">
                 <p style="font-size: 30px;">ゲームスタート</p>
             </a>
         </div><br>
         <div class="row">
-            <div class="col">
-                <a class="float3_green" href="/leaderboard_user" role="button" style="width: 200px;">リーダーボード</a>
+            <div class="col fw-bold">
+                <a href="/leaderboard_user" class="button_leader" role="button" style="width: 200px;">リーダーボード</a>
             </div>
-            <div class="col">
-                <a class="float3_default" href="/questions_user" role="button" style="width: 200px;">問題リスト</a>
+            <div class="col fw-bold">
+                <a href="/questions_user" class="button_list" role="button" style="width: 200px;">問題リスト</a>
             </div>
-            <div class="col">
-                <a class="float3_red" href="/add_questions_user" role="button" style="width: 200px;">問題追加</a>
+            <div class="col fw-bold">
+                <a href="/add_questions_user" class="button_add" role="button" style="width: 200px;">問題追加</a>
             </div>
         </div><br>
+        <a href="/" role="button">
+            <img src="../../static/image/ターン・バックするの矢印アイコン素材 2.png" width="50">
+        </a>
     </div>
+
 </div>
 
 {% endblock %}

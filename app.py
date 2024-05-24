@@ -250,7 +250,7 @@ def play_game():
     #question = Question.query.filter_by(Question.query.difficulty==difficulty[0])
 
     # if num >= len(each_level_questions):
-    if num >= 5:
+    if num >= len(each_level_questions):
         return redirect("/result")
     if request.method == "POST": 
         selected_choice = []
