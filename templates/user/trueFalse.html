@@ -39,12 +39,12 @@
     {% if tf == "True" %}
     <div class="text-center">
         <img src="../../static/image/maru.png" width="150" height="150">
-        <p class="fs-1 fw-bold text-center text-success">{{ tf }}!</p><br>
+        <p class="fs-1 fw-bold text-center text-danger">正解!!!</p><br>
     </div>
     {% else %}
     <div class="text-center">
-        <img src="../../static/image/batu.png" width="200" height="150">
-        <p class="fs-1 fw-bold text-center text-danger">{{ tf }}!</p><br>
+        <img src="../../static/image/batu_blue.png" width="250" height="180">
+        <p class="fs-1 fw-bold text-center text-primary">不正解...</p><br>
     </div>
     {% endif %}
 
@@ -57,9 +57,11 @@
                 </div>
             </section>
         </li>
-    </ul>
+    </ul><br>
 
-    <div class="text-center"><a href="/play_game" class="button ">次へ</a></div><br>
+    <div class="text-center">
+        <a href="/play_game" class="button ">次へ</a>
+    </div><br>
 </div>
 
 {% endblock %}

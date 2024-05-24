@@ -57,6 +57,20 @@
     transition: all .3s;
 }
 
+.float3_pople{
+	position: relative;
+	overflow: hidden;
+    text-decoration: none;
+	display:inline-block;
+	background: #a812be;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 25px;
+    outline: none;
+    /*アニメーションの設定*/
+    transition: all .3s;
+}
+
 /*hoverをしたらボックスに影がつき、上に上がる*/
 .float3_red:hover {
 	top:-3px;
@@ -71,6 +85,10 @@
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 .float3_default:hover {
+	top:-3px;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+.float3_pople:hover {
 	top:-3px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }

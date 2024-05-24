@@ -3,18 +3,40 @@
 {% block body %}
 
 <div id="particles-js"></div>
-<link rel="stylesheet" href="../static/css/button.css">
+<link rel="stylesheet" href="../../static/css/button.css">
+<link rel="stylesheet" href="../../static/css/yajirusi.css">
+
+<style>
+    .example{
+        display: inline-block;
+    }
+    .example img{
+        display: block;
+    }
+</style>
 
 <div id="wrapper">
     <!--ボタン配置-->
     <div class="container-sm bg-light rounded" style="width: 800px;">
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <img src="../../static/image/secquiz_logo_transparent.png" width="400" height="300">
-            <a class="float3_blue" href="/start_game" role="button">ゲームスタート</a><br>
-            <a class="float3_green" href="/leaderboard_user" role="button">リーダーボード</a><br>
-            <a class="float3_default" href="/questions_user" role="button">問題リスト</a><br>
-            <a class="float3_red" href="/add_questions_user" role="button">問題追加</a><br>
-        </div>
+        <img src="../../static/image/secquiz_logo_transparent.png" width="400" height="300">
+        <div class="text-center">
+            <a class="float3_blue" href="/start_game" role="button" style="width: 300px; height: 70px;"><p style="font-size: 30px;">ゲームスタート</p></a>
+        </div><br>
+        <div class="row">
+            <div class="col">
+                <a class="float3_green" href="/leaderboard_user" role="button" style="width: 200px;">リーダーボード</a>
+
+            </div>
+            <div class="col">
+                <a class="float3_default" href="/questions_user" role="button" style="width: 200px;">問題リスト</a>
+            </div>
+            <div class="col">
+                <a class="float3_red" href="/add_questions_user" role="button" style="width: 200px;">問題追加</a>
+            </div>
+        </div><br>
+        <a href="/" role="button">
+            <img src="../../static/image/戻るボタン.png" width="50">
+        </a><br>
     </div>
 </div>
 
