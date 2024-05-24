@@ -61,7 +61,6 @@ def login_manager():
 
 @app.route("/leaderboard_user")
 def leaderboard_user():
-    # players = Player.query.order_by(Player.score.desc()).all()
      # 得点の高い順にプレイヤーを取得
     players = Player.query.order_by(Player.score.desc()).all()
     # 順位付けを行う
@@ -168,12 +167,22 @@ def add_question_manager():
 @app.route("/questions_user")
 def list_questions():
     questions = Question.query.all() 
-    return render_template("user/question_list.html", questions=questions)
+    number = 0
+    numque =[]
+    for question in questions:
+        number = number + 1
+        numque.append((number,question))
+    return render_template("user/question_list.html", numque=numque)
 
 @app.route("/questions_manager")
 def list_questions_manager():
     questions = Question.query.all() 
-    return render_template("manager/question_list.html", questions=questions)
+    number = 0
+    numque =[]
+    for question in questions:
+        number = number + 1
+        numque.append((number,question))
+    return render_template("manager/question_list.html", numque=numque)
 
 @app.route('/delete/<int:id>')
 def delete(id):
