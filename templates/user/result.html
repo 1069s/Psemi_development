@@ -37,14 +37,14 @@
 
 <!--上部分-->
 <div class="container-sm bg-light rounded-pill" style="width: 400px;"><br>
-    <p class="fs-1 fw-bold text-center">結果</p><br>
+    <p class="fs-1 fw-bold text-center">{{ player.name }}の結果</p><br>
 </div><br>
 
 
 <div class="container-sm bg-light text-center" style="width: 800px;"><br>
     
     <p class="fs-3 fw-bold">今回のスコア : {{ save_this_score }} Points!</p>
-    <p class="fs-3 fw-bold">ランク : {{ rank }}</p>
+    <p class="fs-3 fw-bold">ランク : {{ rank }} ({{ player.score }} Points)</p>
     {% if new_re==1 %}
     <p class="fs-5 fw-bold">前回のスコア : {{ save_pre_score }} Points!</p>
     {% endif %}
