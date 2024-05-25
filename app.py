@@ -295,7 +295,7 @@ def play_game():
             correct_choice_text = choices_list[num][each_level_questions[num].correct_choice - 1]
             num += 1
             return redirect(url_for('trueFalse', tf=tf, correct=correct_choice_text)) 
-    if num >= len(each_level_questions):
+    if num >= 5:
         return redirect("/result")
     return render_template("user/play_game.html", question=each_level_questions[num], choices=choices_list[num])
 
