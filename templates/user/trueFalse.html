@@ -51,11 +51,11 @@
     <ul class="accordion-area">
         <li><!--li ~ /li までが一つのアコーディオン-->
             <section>
-                <h3 class="title">問題</h3>
+                <h3 class="title text-success fw-bold">問題</h3>
                 <div class="box">
                     {{ question.text }}
                 </div>
-                <h3 class="title">正解</h3>
+                <h3 class="title text-danger fw-bold">正解</h3>
                 <div class="box">
                     {{ question.correct_choice }}. {{ correct }}
                 </div>
@@ -63,7 +63,7 @@
         </li>
         <li><!--li ~ /li までが一つのアコーディオン-->
             <section>
-                <h3 class="title">解説</h3>
+                <h3 class="title text-primary fw-bold">解説</h3>
                 <div class="box">
                     {{ explanation }}
                 </div>
