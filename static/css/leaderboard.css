@@ -1,0 +1,37 @@
+.list_crown {
+    list-style: none;
+}
+
+.list_crown > li {
+    position: relative;
+    color: #3388dd;
+    font-size: 30px;
+}
+.list_crown > li::before,
+.list_crown > li::after {
+    position: absolute;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    content: "";
+}
+.list_crown > li::before {
+    top: -1.25em;
+    border: 1em solid transparent;
+    border-bottom: 1.5em solid currentColor;
+}
+.list_crown > li::after {
+    top: 0.25em;
+    border: 0.5em solid transparent;
+    border-left: 1em solid currentColor;
+    border-right: 1em solid currentColor;
+}
+.list_crown > li:nth-of-type(1) {
+    color: #dbb400;
+}
+.list_crown > li:nth-of-type(2) {
+    color: #9fa0a0;
+}
+.list_crown > li:nth-of-type(3) {
+    color: #c47022;
+}
