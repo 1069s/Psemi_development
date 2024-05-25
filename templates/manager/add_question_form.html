@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<link rel="stylesheet" href="../static/css/background_simple.css">
-<link rel="stylesheet" href="../static/css/button.css">
-<link rel="stylesheet" href="../static/css/yajirusi_button.css">
+<div id="particles-js"></div>
+<link rel="stylesheet" href="../../static/css/yajirusi_button.css">
+<link rel="stylesheet" href="../../static/css/addbutton.css">
 
 <!--メニューバー-->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -60,46 +60,50 @@
 
             <div class="form-floating">
                 <input type="text" class="form-control" name="choice1" id="choice1" required>
-                <label for="choice1">Choice1</label>
+                <label for="choice1">選択肢1</label>
             </div><br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" name="choice2" id="choice2" required>
-                <label for="choice1">Choice2</label>
+                <label for="choice1">選択肢2</label>
             </div><br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" name="choice3" id="choice3" required>
-                <label for="choice1">Choice3</label>
+                <label for="choice1">選択肢3</label>
             </div><br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" name="choice4" id="choic4" required>
-                <label for="choice1">Choice4</label>
+                <label for="choice1">選択肢4</label>
             </div><br>
         </div><br>
 
-        <p class="fs-6">正解の選択肢を選んでください</p>
-        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="correct_choice"
-            id="correct_choice" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select><br>
+        <div class="border-top"><br>
+            <p class="fs-6">正解の選択肢を選んでください</p>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="correct_choice"
+                id="correct_choice" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br>
+        </div>
 
-        <p class="fs-6">解説文を作成してください</p>
-        <div class="form-floating">
-            <input type="explain" class="form-control" name="explain" id="explain" required>
-            <label for="explain">explanation Text</label>
-        </div><br>
+        <div class="border-top"><br>
+            <p class="fs-6">解説文を作成してください</p>
+            <div class="form-floating">
+                <input type="explain" class="form-control" name="explain" id="explain" required>
+                <label for="explain">explanation Text</label>
+            </div><br>
+        </div>
 
         <div class="form-group row justify-content-center">
-            <input type="submit" class="float3_red" name="submit" value="Add Question">
+            <input type="submit" class="button_add" name="submit" value="Add Question">
         </div>
     </form><br>
     <div class="text-center">
-        <a href="/manager" class="button mb_top">Back to Home</a>
+        <a href="/manager" class="button mb_top">ホームに戻る</a>
     </div><br>
 </div>
 
